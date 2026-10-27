@@ -1,0 +1,23 @@
+name: guestbook-monitoring
+runtime: nodejs
+description: Kubernetes Guestbook example with Prometheus and Grafana monitoring
+config:
+  isMinikube:
+    type: boolean
+    default: false
+    description: Set to true on minikube/kind/Docker Desktop (no LoadBalancer support). Frontend becomes ClusterIP and Grafana NodePort.
+  grafanaServiceType:
+    type: string
+    description: Override the Grafana Service type, LoadBalancer or NodePort. Defaults from isMinikube.
+  grafanaNodePort:
+    type: integer
+    default: 30300
+    description: Node port used when Grafana is exposed as NodePort.
+  grafanaAdminUser:
+    type: string
+    default: admin
+    description: Grafana admin username.
+  enableLoadGenerator:
+    type: boolean
+    default: true
+    description: Run a small curl loop against the frontend so the dashboard has traffic to show.
